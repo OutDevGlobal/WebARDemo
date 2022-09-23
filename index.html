@@ -32,12 +32,15 @@
   <div class="arjs-loader">
     <div>Loading, please wait...</div>
   </div>
+
   <a-scene
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
     arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
   >
+      <!-- create your content here. just a box for now -->
+    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
     <!-- we use cors proxy to avoid cross-origin problems -->
 
     <!--
@@ -47,22 +50,8 @@
       ⚠️⚠️⚠️
     -->
 
-    <a-nft
-      type="nft"
-      url="./pattern-qrcode_outdev_ar_demo.png"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    >
-      <a-entity
-        gltf-model="chichoAvatar.glb"
-        scale="5 5 5"
-        position="50 150 0"
-      >
-      </a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
+
+      <a-marker-camera preset='custom' type='pattern' url='./pattern-marker.patt'></a-marker-camera>
   </a-scene>
 </body>
 </html>
