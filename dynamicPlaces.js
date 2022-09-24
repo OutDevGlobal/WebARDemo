@@ -20,10 +20,10 @@ function staticLoadPlaces() {
 
 var models = [
     {
-        url: './arcade.glb',
-        scale: '0.5 0.5 0.5',
+        url: './chichoAvatar.glb',
+        scale: '0.6 0.6 0.6',
         info: 'Magnemite, Lv. 5, HP 10/10',
-        rotation: '0 180 0',
+        rotation: '0 0 0',
     },
     {
         url: './chichoAvatar.glb',
@@ -32,7 +32,7 @@ var models = [
         info: 'Articuno, Lv. 80, HP 100/100',
     },
     {
-        url: './Lobby_5.glb',
+        url: './chichoAvatar.glb',
         scale: '0.08 0.08 0.08',
         rotation: '0 180 0',
         info: 'Dragonite, Lv. 99, HP 150/150',
