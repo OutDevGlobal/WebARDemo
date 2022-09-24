@@ -14,8 +14,16 @@
   </head>
 
   <body>
+  <div class="centered instructions"></div>
     <a-scene
-      arjs
+            vr-mode-ui='enabled: false'
+            embedded
+            arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+  <!--
+    <a-scene
+      arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'
       embedded
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
@@ -47,8 +55,14 @@
         >
         </a-entity>
       </a-marker>
+
+      <a-camera gps-camera="minDistance: 200;" rotation-reader></a-camera>
       <a-entity gltf-model="./chichoAvatar.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer/>
-      <!-- <a-entity camera></a-entity> -->
+      <a-entity camera></a-entity>
     </a-scene>
+    -->
+    <div class="centered">
+        <button data-action="change"></button>
+    </div>
   </body>
 </html>
