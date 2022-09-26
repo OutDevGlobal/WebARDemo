@@ -10,6 +10,7 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
     <!-- <script src="dynamicPlaces.js"></script> -->
@@ -21,20 +22,14 @@
             <!-- vr-mode-ui='enabled:true'
             embedded
             arjs -->
+      <a-entity id="cameraRig">
+        <a-sky color="#ffffff"></a-sky>
+        <a-entity light="type: hemisphere; color: #fff; groundColor: #fff; intensity: 2"></a-entity>
+        <a-entity gltf-model="./stadium3.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
 
-      <a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
-      <a-entity gltf-model="./stadium3.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
-      <a-sky color="#ECECEC"></a-sky>
-        <a-entity oculus-touch-controls="hand: left"></a-entity>
-        <a-entity oculus-touch-controls="hand: right"></a-entity>
-        <a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
-
-      <!-- Basic movement and teleportation  -->
-      <!-- Camera + controllers rig -->
-      <a-entity id="rig">
-        <a-camera position="0 1.6 0"></a-camera>
-        <a-entity oculus-touch-controls="hand: left" ></a-entity>
-        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+        <a-entity oculus-touch-controls="hand: left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" oculus-thumbstick-controls></a-entity>
+        <a-entity oculus-touch-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" oculus-thumbstick-controls></a-entity>
+        <a-camera look-controls-enabled='true' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
       </a-entity>
     </a-scene>
   <!--
