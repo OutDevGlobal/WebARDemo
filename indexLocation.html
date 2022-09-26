@@ -9,6 +9,7 @@
 
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://gftruj.github.io/webzamples/aframe/controls/oculus-thumbstick-controls.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
     <!-- <script src="dynamicPlaces.js"></script> -->
@@ -29,13 +30,11 @@
         <a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
 
       <!-- Basic movement and teleportation  -->
-      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
-        <!-- camera -->
-        <a-entity id="head" camera="active: true" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: true" ></a-entity>
-              <!-- Left Controller -->
-              <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60" visible="true"></a-entity>
-              <!-- Right Controller -->
-              <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;" line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
+      <!-- Camera + controllers rig -->
+      <a-entity id="rig">
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-entity oculus-touch-controls="hand: left" ></a-entity>
+        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
       </a-entity>
     </a-scene>
   <!--
