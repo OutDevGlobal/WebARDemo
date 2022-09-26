@@ -23,13 +23,14 @@
             embedded
             arjs -->
       <a-entity id="cameraRig">
+        <!-- camera -->
         <a-sky color="#ffffff"></a-sky>
         <a-entity light="type: hemisphere; color: #fff; groundColor: #fff; intensity: 2"></a-entity>
         <a-entity gltf-model="./stadium3.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
 
-        <a-entity oculus-touch-controls="hand: left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" oculus-thumbstick-controls></a-entity>
-        <a-entity oculus-touch-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" oculus-thumbstick-controls></a-entity>
-        <a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
+        <a-entity oculus-touch-controls="hand: left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+        <a-entity oculus-touch-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+        <a-camera id="head" look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
       </a-entity>
     </a-scene>
   <!--
