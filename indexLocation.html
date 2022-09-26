@@ -17,15 +17,11 @@
   <body>
   <div class="centered instructions"></div>
     <a-scene
-            vr-mode-ui='enabled: false'
+            vr-mode-ui='enabled: true'
             embedded
             arjs>
-      <a-entity light="type: directional;
-                   castShadow: true;
-                   intensity: 0.4;
-                   shadowCameraVisible: true;"
-            position="-5 3 1.5"></a-entity>
-        <a-entity gltf-model="./arcade.glb" rotation="0 180 0" scale="0.15 0.15 0.15" light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer/>
+      <a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
+      <a-entity gltf-model="./stadium3.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
         <a-camera gps-camera="minDinstance: 50000" ></a-camera>
     </a-scene>
   <!--
