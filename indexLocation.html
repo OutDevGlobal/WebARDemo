@@ -17,11 +17,11 @@
   <body>
   <div class="centered instructions"></div>
     <a-scene
-            vr-mode-ui='enterVRButton: #myEnterVRButton; enterARButton: #myEnterARButton'
+            vr-mode-ui='true'
+            isMobile
             embedded
             arjs>
-      <a id="myEnterVRButton" href="#"></a>
-      <a id="myEnterARButton" href="#"></a>
+
       <a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
       <a-entity gltf-model="./stadium3.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
         <a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
