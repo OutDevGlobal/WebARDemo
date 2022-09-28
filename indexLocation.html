@@ -14,6 +14,9 @@
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
     <!-- <script src="dynamicPlaces.js"></script> -->
+    <!-- Entrada : 20.646506, -103.409236 -->
+    <!-- Lobby : 20.6465648,-103.4091853 -->
+    <!-- -->
   </head>
 
   <body>
@@ -22,14 +25,32 @@
             <!-- vr-mode-ui='enabled:true'
             embedded
             arjs -->
+          <a-nft
+      type="nft"
+      url="./qrcode_outdev_ar_demo.iset"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+      <a-entity
+        gltf-model="./arcade.glb"
+        scale="5 5 5"
+        position="50 150 0"
+      >
+      </a-entity>
+    </a-nft>
       <a-entity id="cameraRig">
         <!-- camera -->
         <a-sky color="#fff"></a-sky>
         <a-entity light="type: hemisphere; color: #fff; groundColor: #fff; intensity: 3"></a-entity>
-        <a-entity gltf-model="./arcade.glb" rotation="0 180 0" scale="0.15 0.15 0.15" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
+        <!--
+        <a-entity gltf-model="./Lobby_5.glb" rotation="0 180 0" scale="0.05 0.05 0.05" gps-entity-place="longitude: -44.122662; latitude: -19.898399;" animation-mixer />
 
         <a-entity oculus-touch-controls="hand: left" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
         <a-entity oculus-touch-controls="hand: right" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+        -->
         <a-camera id="head" look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="minDinstance: 50000" rotation-reader></a-camera>
       </a-entity>
     </a-scene>
