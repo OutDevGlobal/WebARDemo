@@ -5,49 +5,26 @@
     <title>Gesture Interactions - A-Frame & AR.js</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
-
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="gesture-detector.js"></script>
-    <script src="gesture-handler.js"></script>
   </head>
 
   <body>
-    <a-scene
-      arjs
-      embedded
-      renderer="logarithmicDepthBuffer: true;"
-      vr-mode-ui="enabled: false"
-      gesture-detector
-      id="scene"
-    >
-      <a-assets>
-        <a-asset-item
-          id="bowser"
-          src="./Lobby_5.glb"
-        >
-        </a-asset-item>
-      </a-assets>
-
-      <a-marker
-        preset="hiro"
-        raycaster="objects: .clickable"
-        emitevents="true"
-        cursor="fuse: false; rayOrigin: mouse;"
-        id="markerA"
-      >
-        <a-entity
-          id="bowser-model"
-          gltf-model="#bowser"
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          class="clickable"
-          gesture-handler
-        >
-        </a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
+    <div class="h-full overflow-hidden">
+      <div class="flex flex-col w-full h-full justify-center content-center items-center">
+        <div>
+          <a href="">Image Tracker AR Box</a>
+        </div>
+        <div>
+          <a href="./ar-hiro-marker-video.html">AR Video With "HIRO" Marker</a>
+        </div>
+        <div>
+          <a href="./ar-video.html">AR Video Alone</a>
+        </div>
+        <div>
+          <a href="">VR</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

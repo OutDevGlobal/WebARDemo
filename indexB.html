@@ -24,22 +24,47 @@
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <a-assets>
+        <video id="videoBunny" preload="auto"
+               src="./SubZ3roDemo.mp4"
+               width="160" height="90" autoplay loop="true"
+               crossOrigin="anonymous" muted></video>
+        <video id="videoFireworks" preload="auto"
+               src="./SubZ3roDemo.mp4"
+               width="160" height="90" autoplay loop="true"
+               crossOrigin="anonymous" muted></video>
+      </a-assets>
+
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
       <a-nft
         type="nft"
         url="./trex"
         smooth="true"
         smoothCount="10"
-        smoothTolerance=".01"
+        smoothTolerance="5"
         smoothThreshold="5">
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-          <a-entity
-          gltf-model="./box_uv.glb"
+        <a-entity
+          gltf-model="./Lobby_5.glb"
               scale="5 5 5"
-              position="100 100 0"
+              position="0 180 0"
           >
           </a-entity>
+        <script>
+          alert("Marker Found")
+        </script>
+
+        <!-- <a-assets>
+          <video id="penguin-sledding" autoplay loop="true" src="./SubZ3roDemo.mp4"></video>
+        </a-assets> -->
       </a-nft>
+      <a-entity material="shader: flat; src: #videoBunny"
+                  geometry="primitive: plane; width: 160; height: 90;"
+                  position="0 60 -250"
+                  rotation="0 35 0"
+                  play-on-click
+                  visible="false">
+        </a-entity>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
     </a-scene>
