@@ -13,6 +13,33 @@
     <!-- <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
     <script src="dynamicPlaces.js"></script> -->
+    <script>
+        AFRAME.registerComponent('vidhandler', {
+            schema: {
+              target: {type: 'string'}
+            },
+            init: function() {
+                this.videoNodes = document.querySelectorAll(this.data.target)
+            },
+            tick: function() {
+                if (this.el.object3D.visible == true) {
+                    if (!this.toggle) {
+                        this.toggle = true;
+                        for (let i = 0; i < this.videoNodes.length; i++) {
+                            this.videoNodes[i].play();
+                        }
+                    }
+                } else {
+                    if (this.toggle) {
+                      for (let i = 0; i < this.videoNodes.length; i++) {
+                        this.videoNodes[i].pause();
+                      }
+                      this.toggle = false;
+                    }
+                }
+            }
+        });
+    </script>
   </head>
 
   <body>
@@ -25,20 +52,27 @@
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <a-assets>
+          <video id="vidOreo" loop="true" crossorigin="anonymous" src='./demoOreo.mp4' playsinline></video>
+      </a-assets>
       <a-nft
         type="nft"
         url="./image_trackers/arcaddy-box-hsmall"
         smooth="true"
         smoothCount="10"
         smoothTolerance="5"
-        smoothThreshold="5">
+        smoothThreshold="5"
+        vidhandler="target: #vidOreo"
+      >
+
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-          gltf-model="./Lobby_5.glb"
-              scale="5 5 5"
-              position="0 180 0"
-          >
-          </a-entity>
+        <a-entity id="parent" rotation="0 0 0">
+          <a-box  geometry="primitive: plane; width: 560; height: 400;"
+                  position="0 0 0"
+                  rotation="-90 0 0"
+                  material='src: #vidOreo'
+          ></a-box>
+        </a-entity>
         <!-- <a-assets>
           <video id="penguin-sledding" autoplay loop="true" src="./SubZ3roDemo.mp4"></video>
         </a-assets> -->
