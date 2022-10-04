@@ -1,8 +1,8 @@
-body {
+/* body {
   margin: 0px;
   overflow: hidden;
 }
-
+*/
 .centered {
     height: 20%;
     justify-content: center;
@@ -16,7 +16,7 @@ body {
     right: 0;
 }
 
-button {
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
