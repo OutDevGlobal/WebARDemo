@@ -51,7 +51,10 @@
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
 
       <a-assets>
-          <video id="vidOreo" loop="true" crossorigin="anonymous" src='./demoOreo.mp4' playsinline></video>
+          <!-- <video id="vidOreo" loop="true" crossorigin="anonymous" src='./demoOreo.mp4' playsinline></video> -->
+          <video id="vidOreo" autoplay playsinline controls crossorigin="anonymous" src='./demoOreo.mp4' >
+              <source src="./demoOreo.mp4" type="video/mp4">
+          </video>
       </a-assets>
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
