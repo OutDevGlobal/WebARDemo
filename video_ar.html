@@ -37,7 +37,9 @@
                   touch-action="pan-y"
                   alt="A 3D model of an astronaut"
       >
-        <button id="arCustomButton" slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: relative; top: 16px; right: 16px; ">
+        <button id="arCustomButton"
+                slot="ar-button"
+                style="padding:25px; margin: 0 auto; background-color: white; border-radius: 4px; border: none; position: relative; top: 16px; right: 16px; ">
           👋 Activar Realidad Aumentada
         </button>
       </model-viewer>
@@ -54,7 +56,7 @@
       /* Three JS Code For Texture With Video */
       const modelViewer = document.querySelector('model-viewer');
       const video = document.getElementById( 'vidOreo' );
-      document.querySelector('#btnJustForFun').addEventListener('click', ()=>{
+      document.querySelector('#arCustomButton').addEventListener('click', ()=>{
         console.log("Play Video")
           video.play()
       })
