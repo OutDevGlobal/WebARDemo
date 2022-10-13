@@ -61,7 +61,7 @@
           video.play()
       })
 
-      video.addEventListener('loadeddata',()=>{
+      video.addEventListener('canplay',()=>{
         console.log('Video Ready')
         video.loop = true;
         const videoTexture = new THREE.VideoTexture( video );
