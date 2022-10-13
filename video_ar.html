@@ -25,9 +25,10 @@
   </head>
 
   <body style='margin: 0; overflow: hidden;'>
-
-    <model-viewer id="model-viewer"
-                  src="./TV.glb"
+    <button id="btnJustForFun">Just For Fun</button>
+    <div style="width: 100%; height: 100%">
+      <model-viewer id="model-viewer"
+                  src="./arcade.glb"
                   ar ar_preferred="3D"
                   ar-modes="webxr scene-viewer quick-look"
                   auto-rotate="true"
@@ -35,37 +36,49 @@
                   camera-controls
                   touch-action="pan-y"
                   alt="A 3D model of an astronaut"
-    >
-        <button id="arCustomButton" slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: relative; top: 16px; right: 16px; ">
+      >
+        <button id="arCustomButton"
+                slot="ar-button"
+                style="padding:25px; margin: 0 auto; background-color: white; border-radius: 4px; border: none; position: relative; top: 16px; right: 16px; ">
           👋 Activar Realidad Aumentada
         </button>
-    </model-viewer>
-    <video id="vidOreo" crossorigin="anonymous" src='./demoOreo.mp4' >
-        <source src="./demoOreo.mp4" type="video/mp4">
-    </video>
+      </model-viewer>
 
+      <div style="visibility: hidden">
+        <video id="vidOreo" loop autoplay playsinline crossorigin="anonymous" src='./demoOreo.mp4' >
+          <source src="./demoOreo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
 
     <script type="module">
-      //import * as THREE from 'three';
       /* Three JS Code For Texture With Video */
+      const modelViewer = document.querySelector('model-viewer');
       const video = document.getElementById( 'vidOreo' );
-      video.play();
-      const videoTexture = new THREE.VideoTexture( video );
-      const modelViewer = document.querySelector('model-viewer')
-      const plane = new THREE.PlaneGeometry(1, 1);
-      const material = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
-        map: videoTexture,
-        side: THREE.DoubleSide,
-      });
-      const mesh = new THREE.Mesh(plane, material);
-      const currentScene = Object.getOwnPropertySymbols(modelViewer)[18];
-      mesh.position.set(0, 1, 0);
-      mesh.scale.set(10, 10, 1);
-      mesh.rotateY(1);
+      document.querySelector('#arCustomButton').addEventListener('click', ()=>{
+        console.log("Play Video")
+          video.play()
+      })
 
-      modelViewer[currentScene].add(mesh)
+      video.addEventListener('loadeddata',()=>{
+        console.log('Video Ready')
+        video.loop = true;
+        const videoTexture = new THREE.VideoTexture( video );
+        const plane = new THREE.PlaneGeometry(1, 1);
+        const material = new THREE.MeshBasicMaterial({
+          color: 0xffffff,
+          map: videoTexture,
+          side: THREE.DoubleSide,
+        });
+        const mesh = new THREE.Mesh(plane, material);
+        const currentScene = Object.getOwnPropertySymbols(modelViewer)[18];
+        mesh.position.set(0, 1, 0);
+        mesh.scale.set(10, 10, 1);
+        mesh.rotateY(1);
+
+        modelViewer[currentScene].add(mesh)
+      })
 
       const arStatusChecker =  () => {
         document.querySelector("model-viewer").addEventListener('ar-status', (event) => {
@@ -80,23 +93,23 @@
       }
 
       const renderAR = async () =>{
-        console.log("AR Function")
+        //console.log("AR Function")
 
-        console.log(modelViewer.loaded)
+        // console.log(modelViewer.loaded)
         if(modelViewer.loaded){
-
+          /*
           const materials = modelViewer.model.materials;
 
           materials.map(async (material) => {
             return await createAndApplyVideoTexture('normalTexture', material)
           })
-
-          document.getElementById('arCustomButton').addEventListener('click', () => {});
-
+          */
+          // document.getElementById('arCustomButton').addEventListener('click', () => {});
+          /*
           setTimeout(
             modelViewer.querySelector('button#arCustomButton').click(),
             50000
-          )
+          )*/
         }else {
           setTimeout(renderAR, 1);
         }
@@ -111,32 +124,12 @@
               document.addEventListener("DOMContentLoaded", fn);
           }
       }
+
       const createAndApplyVideoTexture = async (channel, material) => {
 
         const texture = await modelViewer.createTexture('./arcaddy_logo_for_qr.png');
         material[channel].setTexture(texture);
       }
-      const createAndApplyTexture = async (channel, event, material) => {
-        if (event.target.value === "None") {
-          // Clears the texture.
-          material[channel].setTexture(null);
-          // Display the names values
-          // textureName.innerText = "None";
-          // imageName.innerText = "None";
-        } else if (event.target.value) {
-          // Creates a new texture.
-          const texture = await modelViewer.createTexture(event.target.value);
-          // Set the texture name
-          texture.name = event.target.options[event.target.selectedIndex].text.replace(/ /g, "_").toLowerCase();
-          // Applies the new texture to the specified channel.
-          material[channel].setTexture(videoTexture);
-          // Display the names values
-          // textureName.innerText = texture.name;
-          // imageName.innerText = texture.source.name;
-        }
-      }
-
-
 
       window.addEventListener('load', docReady, false )
 
